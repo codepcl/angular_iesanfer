@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data.accion}} {{this.component}}</h1>
+<div mat-dialog-content>
+  <p></p>
+  <mat-form-field>
+    <mat-label>Periodo</mat-label>
+    <input matInput [(ngModel)]="data.periodo" >
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.periodo" cdkFocusInitial>Ok</button>
+</div>

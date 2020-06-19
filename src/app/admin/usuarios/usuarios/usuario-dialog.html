@@ -1,0 +1,87 @@
+<h1 mat-dialog-title>{{data.accion}} {{this.component}}</h1>
+<!-- <form [formGroup]="form"> -->
+<div mat-dialog-content [formGroup]="form" class="dialog">
+  <p></p>
+  <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+    <mat-grid-tile>
+      <mat-form-field >
+        <mat-label>Perfil</mat-label>
+        <mat-select formControlName="perfil">
+          <mat-option *ngFor="let row of perfiles" [value]="row.id">{{row.perfil}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Documento de identidad</mat-label>
+        <input matInput formControlName="documento">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+      <mat-label>Usuario</mat-label>
+        <input matInput formControlName="usuario" >
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" >
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Repita la contraseña</mat-label>
+      <input matInput formControlName="password_confirmation" [type]="hide ? 'password' : 'text'" >
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Nombres</mat-label>
+      <input matInput formControlName="nombres" >
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Apellido paterno</mat-label>
+      <input matInput formControlName="apepat" >
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Apellido materno</mat-label>
+      <input matInput formControlName="apemat" >
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" >
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Telefono</mat-label>
+      <input matInput formControlName="telefono" >
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Dirección</mat-label>
+      <input matInput formControlName="direccion" >
+    </mat-form-field>
+  </mat-grid-tile>
+</mat-grid-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Ok</button>
+</div>
+<!-- </form> -->

@@ -1,0 +1,60 @@
+<mat-nav-list>
+        <div class="container-user">
+          
+          <p class="user">
+            <mat-icon class="icon-user">person_pin</mat-icon>
+          </p>
+        </div>
+        <p class="user-name">Pierr Daniel Chino Lurita</p>
+    <hr>
+    <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/dashboard']">
+      <mat-icon class="sidenav-icon">dashboard</mat-icon>Dashboard
+    </a>
+    <!-- Administración -->
+    <div class="nested-menu">
+      <a mat-list-item (click)="showMenu=!showMenu">
+        <mat-icon class="sidenav-icon">add</mat-icon>Administración
+      </a>
+      <ul class="nested submenu" [class.expand]="showMenu">
+        <li>
+          <a [routerLinkActive]="'active'" [routerLink]="['/usuarios']">
+            <mat-icon class="sidenav-icon">bug_report</mat-icon>Usuarios
+          </a>
+        </li>
+        <li>
+          <a  [routerLinkActive]="'active'" [routerLink]="['/perfiles']">
+            <mat-icon class="sidenav-icon">bug_report</mat-icon>Perfiles
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Configuración -->
+    <div class="nested-menu">
+      <a mat-list-item (click)="showMenu2=!showMenu2">
+        <mat-icon class="sidenav-icon">add</mat-icon>Configuración
+      </a>
+      <ul class="nested submenu" [class.expand]="showMenu2">
+        <li>
+          <a [routerLinkActive]="'active'" [routerLink]="['/periodos']" >
+            <mat-icon class="sidenav-icon">bug_report</mat-icon>
+            Periodo
+          </a>
+        </li>
+        <li>
+          <a [routerLinkActive]="'active'" [routerLink]="['/alumnos']" >
+            <mat-icon class="sidenav-icon">bug_report</mat-icon>
+             Alumno
+          </a>
+        </li>
+        <li>
+          <a [routerLinkActive]="'active'" [routerLink]="['/asistencia']" >
+            <mat-icon class="sidenav-icon">bug_report</mat-icon>
+             Asistencia
+          </a>
+        </li>
+      </ul>
+    </div>
+    <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/reportes']">
+      <mat-icon class="sidenav-icon">dashboard</mat-icon>Reportes
+    </a>
+  </mat-nav-list>

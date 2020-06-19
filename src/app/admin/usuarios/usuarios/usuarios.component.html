@@ -1,0 +1,82 @@
+<h1>{{this.component}}</h1>
+<br>
+    <div class="wrapper">
+      <button mat-raised-button color="accent" (click)="openDialog()" class="addButton">Añadir {{this.component}}</button>
+    </div>
+<br>
+<hr>
+<section id="usuarios-table" class="mat-elevation-z8 bg-white">
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" matSort class="w-100">
+ <!-- <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()")></mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container> -->
+    <ng-container matColumnDef="numero">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
+        <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
+      </ng-container>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+      <td mat-cell *matCellDef="let row"> {{row.usuario}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+      <td mat-cell *matCellDef="let row" > 
+        <mat-slide-toggle
+          *ngIf="row.estado"
+          (change)="onChange($event, row.id)"
+          class="example-margin"
+          [color]="color"
+          checked = "true"
+          [disabled]="disabled">
+        </mat-slide-toggle>
+        <mat-slide-toggle
+          *ngIf="!row.estado"
+          (change)="onChange($event, row.id)"
+          class="example-margin"
+          [color]="color"
+          checked="false"
+          [disabled]="disabled">
+        </mat-slide-toggle>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha del registro </th>
+      <td mat-cell *matCellDef="let row"> {{row.created_at | date:'medium'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+        <td mat-cell *matCellDef="let row"> 
+          <div class="button-row">
+            <button mat-icon-button aria-label="Actualizar" [color]="color">
+              <mat-icon (click)="onUpdate(row.id)" >edit</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="Eliminar" [color]="color">
+              <mat-icon (click)="onDelete(row.id)">delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</section>
